@@ -3,14 +3,13 @@ package edu.kh.javatest;
 public class VariableEx3 {
 	public static  void main(String[] args) {
 		
-		/* ***강제 형변환***
-		 * 1. 값의 범위가 큰 자료형 -> 작은 자료형으로 강제적 변환 -> 데이터 손실 고려
+		/*	 *** < 강제 형변환 > ***
 		 * 
-		 *  2. 의도적으로 자료형을 다른 자료형으로 변환 시킬때
+		 * 1. 값의 범위가 큰 자료형을 작은 자료형으로 강제적 변환시 데이터 손실 고려 필요
+		 * 2. 의도적으로 자료형을 다른 자료형으로 변환
 		 *  
 		 *  [작성법]
-		 *  (자료형) 변수명||값; // 지정된 자료형으로 변경됨
-		 *  // -> 자료형 변환 + 데이터 손실
+		 *  (자료형) 변수명||값; // <- 지정된 자료형으로 변경, 자료형 변환 + 데이터 손실
 		 * */
 		
 		
@@ -19,8 +18,8 @@ public class VariableEx3 {
 //		byte result1 =  num1;
 		byte result1 = (byte) num1; // 강제 형변환
 		
-		System.out.println("num1 : " + num1);
-		System.out.println("result1 : " + result1);
+		System.out.println("num1 : " + num1); // 290
+		System.out.println("result1 : " + result1); //34 <- 데이터 손실
 		
 		
 		/* 강제 형변환 확인2  - 실수를 정수로 변환해서 소수점을 없애기 (데이터 손실을 활용) */
@@ -28,20 +27,21 @@ public class VariableEx3 {
 //		int result2 = num2;
 		int result2 = (int) num2;
 		
-		System.out.println("num2 : " + num2);
-		System.out.println("restul2 : " + result2);
+		System.out.println("num2 : " + num2); // 123.123456789
+		System.out.println("restul2 : " + result2); // 123 <- 정수형으로 바꿔 데이터 손실 활용 가능
 
 		
-		/* 난수 + 강제 형변환 (Math.random();	 0.0<= x <1.0) */
+		/* 난수 + 강제 형변환, 난수: Math.random() : 0.0 <= x < 1.0 */
 		
-		// 1부터 10 사이 난수
-		int random = (int) (Math.random() *10 + 1); // 난수에서 발생하는 소수 부분을 강제 형변환으로 제거 (math.floor 없이 가능)
+		// 1부터 10 사이 난수 출력
+		int random = (int) (Math.random() *10 + 1); // 난수에서 발생하는 소수 부분을 강제 형변환해서 제거 (math.floor 없이 가능)
 		
-		System.out.println("random : " + random);
+		System.out.println("random : " + random); // 정수단위의 난수
+		
 		
 		/* 강제 형변환 확인 3 <- 의도적으로 강제 형변환 */
 		System.out.println( 123 ); // (int) 123
-		System.out.println( (double)123 ); // U(double) 123.0 
+		System.out.println( (double)123 ); // (double) 123.0 
 		
 		/* 강제 형변환 확인 4 + 값 처리 원칙 (같은 자료형 연산 -> 같은 자료형 결과) */
 		
