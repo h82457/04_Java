@@ -1,4 +1,4 @@
-package edu.kh.oopy.basic;
+package edu.kh.oop.basic;
 
 /**
  * 계좌 클래스

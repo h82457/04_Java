@@ -1,4 +1,4 @@
-package edu.kh.oopy.basic;
+package edu.kh.oop.basic;
 
 public class AccountRun {
 	public static void main(String[] args) {

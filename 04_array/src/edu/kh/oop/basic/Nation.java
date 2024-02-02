@@ -1,4 +1,4 @@
-package edu.kh.oopy.basic;
+package edu.kh.oop.basic;
 
 // 클래스 : 객체가 가져야할 속성(값), 기능(메서드)를 글(코드)로 작성해둔 문서(설계도)
 /**
