@@ -17,7 +17,7 @@ public class StudentService {
 		
 		
 		// 학생 객체를 참조할 참조형 변수 2개 선언
-		Student std1 = null; // null <- 아직 참조하는 객체 주소 X
+		Student std1 = new Student("홍길동", "123123", '남'); // null <- 아직 참조하는 객체 주소 X
 		Student std2 = null;
 		
 		
@@ -45,7 +45,6 @@ public class StudentService {
 				
 				if(select == 1) std1 = createStudent();
 				else 			std2 = createStudent();
-				
 				break;
 			
 			case 2: 
@@ -57,7 +56,6 @@ public class StudentService {
 				else 				  text = studentInform(std2);
 				
 				System.out.println(text);
-				
 				break;
 				
 			case 3: 
@@ -65,7 +63,6 @@ public class StudentService {
 				
 				if(sc.nextInt() == 1)	updateStudentName(std1);
 				else					updateStudentName(std2);
-				
 				break;
 			case 4: 
 				System.out.print("Java 역량을 수정할 학생 선택 (1: std1 / 2: std2) : ");
@@ -73,17 +70,23 @@ public class StudentService {
 				if(sc.nextInt() == 1) 	updateJava(std1);
 				else					updateJava(std2);
 				break;
+				
 			case 5: 
 				System.out.print("HTML 역량을 수정할 학생 선택 (1: std1 / 2: std2) : ");
 				if(sc.nextInt() == 1) 	updateHtml(std1);
 				else					updateHtml(std2);
 				break;
+				
 			case 6: 
-
+				String result = compareJava(std1, std2);
+				System.out.println(result);
 				break;
+				
 			case 7: 
-
+				result = compareHtml(std1, std2);
+				System.out.println(result);
 				break;
+				
 			case 0: System.out.println("===== 프로그램 종료 ====="); break;
 			default :
 			}
@@ -152,14 +155,73 @@ public class StudentService {
 	 */
 	private void updateJava(Student s) {
 		
-		
 		// [결과 출력]
 		// Java 역량 수정 완료
 		// 70 -> 80 (10) / 50 -> 0 (-100) / 50 -> 100 (100)
 		
+		System.out.println("증가 또는 감소한 Java 역량 입력(정수) : ");
+		int input = sc.nextInt();
+		
+		// 이전 점수 + 입력 받은 점수를 전달 받은 학생에게 세팅
+		int before = s.getJava();
+		s.setJava(before + input);
+		
+		// 점수가 최대/최소값을 넘지 못하게 처리
+		if(s.getJava() > Student.MAX_VALUE ) { // <- s.MAX_VALUE (X), 클래스명.MAX_VALUE(O)
+			s.setJava(Student.MAX_VALUE);
+		}
+		
+		if(s.getJava() < Student.MIN_VALUE)	s.setJava(Student.MIN_VALUE);
+		
+		System.out.println("Java 역량 수정 완료");
+		System.out.printf("%d -> %d (%d) \n", before, s.getJava(), input);
 	}
 	private void updateHtml(Student s) {
+		System.out.println("증가 또는 감소한 HTML 역량 입력(정수) :");
+		int input = sc.nextInt();
 		
+		int before = s.getHtml();
+		s.setHtml(before+input);
+		
+		if(s.getHtml() > Student.MAX_VALUE) s.setHtml(Student.MAX_VALUE);
+		if(s.getHtml() < Student.MIN_VALUE) s.setHtml(Student.MIN_VALUE);
+		
+		System.out.println("HTML 역량 수정 완료");
+		System.out.printf("%d -> %d (%d) \n", before, s.getHtml(), input);
 	}
 	
+	/** 매개 변수로 전달 받느 두 Student의 Java 점수 비교
+	 * @param s1
+	 * @param s2
+	 * @return
+	 */
+	private String compareJava(Student s1, Student s2) {
+		
+		// 전달 받은 s1이 참조하는 Student 객체가 없을 경우
+		if(s1 == null) return "첫번째 학생이 등록되지 않았습니다.";
+		if(s2 == null) return "두번째 학생이 등록되지 않았습니다.";
+		
+		String result = String.format("%s : %d / %s : %d \n", s1.getName(), s2.getJava(), s1.getJava(), s2.getJava());
+		
+		// 두 학생의 점수 비교
+		if(s1.getJava() > s2.getJava()) return result + s1.getName() + "의 점수가 더 높습니다.";
+		if(s1.getJava() < s2.getJava()) return result + s2.getName() + "의 점수가 더 높습니다.";
+		
+		
+		return result + "점수가 같습니다.";
+	}
+	
+	private String compareHtml(Student s1, Student s2) {
+		// 입력값 X
+		if(s1 == null) return "첫번째 학생이 등록되지 않았습니다.";
+		if(s2 == null) return "첫번째 학생이 등록되지 않았습니다.";
+		
+		String result = String.format("%s : %d / %s : %d \n", s1.getName(), s2.getName(), s1.getHtml(), s2.getHtml());
+		
+		if(s1.getHtml() > s2.getHtml()) return result + s1.getName() + "의 점수가 더 높습니다.";
+		if(s1.getHtml() > s2.getHtml()) return result + s2.getName() + "의 점수가 더 높습니다.";
+		
+		
+		return result + "점수가 같습니다.";
+	}
 }
