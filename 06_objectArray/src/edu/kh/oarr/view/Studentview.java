@@ -12,6 +12,8 @@ public class Studentview {
 	// static이 없는 필드 인스턴스 변수
 	
 	private Scanner sc = new Scanner(System.in);
+	
+	// StudentService 클래스 가져오기
 	private StudentService service = new StudentService();
 	
 	/**
@@ -51,7 +53,7 @@ public class Studentview {
 		}while(input != 0);
 	}
 	
-	/**
+	/** 1)
 	 * 학생 추가 화면
 	 * 
 	 * 학번, 이름, 성별을 입력 받아 StudentService의 students 배열에 추가
@@ -59,6 +61,8 @@ public class Studentview {
 	private void addStudent() {
 		
 		System.out.println("\n -----  학생 추가 -----");
+		
+		// 학번, 이름, 성별을 입력 받기
 		
 		System.out.print("학번 : ");
 		String studentNum = sc.next();
@@ -70,45 +74,49 @@ public class Studentview {
 		char gender = sc.next().toUpperCase().charAt(0); // 문자열.toUpperCase() : 영어 대문자로 변경
 		
 		// 학생 추가 Service 메서드 호출 후 결과 반환 받기
+//		매개변수 (studentNum, name, gender) 를 가지는 Student 객체를 생성해서 service의  addStudent 메서드 호출,
+//		계산된 값을 boolean result에 대입
 		boolean result = service.addStudent(new Student(studentNum, name, gender));
+		
 		
 		if(result) System.out.println(name + "학생이 추가 되었습니다.");
 		else System.out.println("학생을 더이상 추가할 수 없습니다.");
 	}
 	
-	/**
+	/** 2)
 	 * 등록된 학생 전체 출력
 	 */
 	private void selectAll() {
 		
 		System.out.println("\n ----- 학생 전체 조회 -----");
 		
-		// Service 에 있는 students 배열 참조 주소를 반환 받아 studentList 배열에 저장
+		// Service 에 있는 students 배열 참조 주소를 반환 받아 / studentList 배열에 저장
 		Student[] studentList = service.getStudents();
 		
 		for(int i=0 ; i<studentList.length ; i++) {
 			
 			// 학생이 없는 인덱스인 경우 반복 종료
-			
 			if(studentList[i] == null) break;
 			
+			// 학생이 있는 인덱스인 경우 내용 출력 (student클래스의 toString 메소드 이용)
 			System.out.println(i + "번째 인덱스\n" + studentList[i].toString());
 			System.out.println();
 		}
 		
 	}
 	
-	/**
+	/** 3)
 	 * 학생 1명의 정보 조회 (index 검색)
 	 */
 	private void selectIndex() {
 		
 		System.out.println("\n ----- 학생 1명 정보 조회(인덱스) -----");
 		
+		// 조회할 인덱스 값 받기
 		System.out.print("인덱스 입력: ");
 		int index = sc.nextInt();
 
-		// Service로 Index 전달 후 일치하는 학생이 있다면 반환 받아 std에 저장
+		// Service의 selectIndex 메소드로 Index값 전달, 인덱스값이 일치하는 학생이 있다면 반환 받아 std에 저장
 		Student std = service.selectIndex(index);
 		
 		if(std == null) System.out.println("해당 인덱스에 학생이 존재하지 않습니다.");

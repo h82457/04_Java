@@ -45,7 +45,8 @@ public class StudentService {
 	 * @param newStd : 전달 받은 학생
 	 * @return 대입 성공시 true, 실패시 false (배열이 다 찼을때 실패)
 	 */
-	public boolean addStudent(Student newStd) {
+	// boolean result 값을 반환
+	public boolean addStudent(Student newStd) { // newStd == new Student(studentNum, name, gender)
 		
 		// students 배열의 인덱스 요소 중 맨 처음 null 인 부분을 찾아 newStd 대입
 		
@@ -54,13 +55,13 @@ public class StudentService {
 			if(students[i] == null) {
 				students[i] = newStd;
 				
-				return true;
+				return true; // null 인 인덱스에 newStd 대입
 			}
 		}
-		return false;
+		return false; // Student[] 에 빈 인덱스가 X-  추가 X
 	}
 	
-	/** 학생 객체 배열(students) 참조 주소 반환
+	/** 2) 학생 객체 배열(students) 참조 주소 반환
 	 * @return students (주소<- 얕은 복사) 
 	 */
 	public Student[] getStudents() {
