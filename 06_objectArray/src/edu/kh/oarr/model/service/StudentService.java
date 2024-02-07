@@ -46,7 +46,9 @@ public class StudentService {
 	 * @return 대입 성공시 true, 실패시 false (배열이 다 찼을때 실패)
 	 */
 	// boolean result 값을 반환
-	public boolean addStudent(Student newStd) {
+
+	public boolean addStudent(Student newStd) { // newStd == new Student(studentNum, name, gender)
+
 		
 		// students 배열의 인덱스 요소 중 맨 처음 null 인 부분을 찾아 newStd 대입
 		
