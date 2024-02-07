@@ -39,7 +39,7 @@ public class Child1 extends Parent{
 	
 	// Child1 의 필드 + 물려받은 필드 문자열로 만들어 반환
 	public String informChild1() {
-		return String.format("%s / %s / %d / %s / %s", lastName, address, getMoney(), getCar(), computer); // private 은 getter/setter형태로 호출 가능
+	return String.format("%s / %s / %d / %s / %s", lastName, address, getMoney(), getCar(), computer); // private 은 getter/setter형태로 호출 가능
 	}
 	
 	// 부모로부터 상속 받은 introduce 메서드 overriding(재정의) 하기
@@ -49,7 +49,12 @@ public class Child1 extends Parent{
 	
 	// Object -> Parent 오버라이딩한 toString() 을 또 오버라이딩 (계속해서 재정의 가능)
 	@Override
-	public String toString() {
-		return super.toString() + "\nChild.toString() : " + computer; // super.toString에 오버라이딩
+	public String toString() { return super.toString() + "\nChild.toString() : " + computer;}
+	
+	/* final 메서드 -> 오버라이딩 불가 */
+//	메서드의 기능이 안되는 경우
+	
+	public final void onlyChild1() {
+		System.out.println("final 메서드입니다.");
 	}
-}
+	}

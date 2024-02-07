@@ -1,3 +1,4 @@
+
 package edu.kh.inheritance.model.dto;
 
 // Object 클래스 : 모든 클래스의 최상위 부모
@@ -24,7 +25,7 @@ public class Parent /* extends Object */{
 		this.car = car;
 		
 		System.out.println("매개 변수 생성자로 부모 객체 생성");
-	}
+		}
 	
 	// money getter/setter
 	public int getMoney() {
@@ -71,3 +72,4 @@ public class Parent /* extends Object */{
 		return String.format("Parent.toString() : %s / %s / %d/ %s", lastName, address, money, car);
 	}
 }
+
