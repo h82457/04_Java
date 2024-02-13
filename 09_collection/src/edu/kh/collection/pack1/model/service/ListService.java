@@ -6,6 +6,7 @@ import java.util.Scanner;
 import edu.kh.collection.pack1.model.dto.Book;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 
@@ -150,8 +151,17 @@ public class ListService {
 	 * 	- 추가, 조회, 수정 ,제거 구현
 	 */
 	public void bookManage() {
+		/* - ArrayList : 배열 형태의 리스트 
+		 * ㄴ 장점 : 검색이 빠름
+		 * ㄴ 단점 : 중간 삽입, 제거가 느림
+		 *  
+		 * - LinkedList : 연결된 형태의 리스트(기차)
+		 * ㄴ 장점 : 중간 삽입, 제거가 빠름
+		 * ㄴ 단점 : 검색이 느림
+		 * */
 		
-		List<Book> bookList = new ArrayList<Book>();
+//		List<Book> bookList = new ArrayList<Book>(); // ArrayList
+		List<Book> bookList = new LinkedList<Book>(); // LinkedList
 		
 		Scanner sc = new Scanner(System.in);
 		int input = 0; // 메뉴 번호 입력
