@@ -36,7 +36,7 @@ public class ListService {
 		// 반환형 메서드명 (매개변수)
 		
 //		 E(Elemnet) : 요소를 뜻하는 상징적인 글자(기본형X)
-//						== object, String, Sutdent 등 자료형 가리지 않고 들어갈 수 있다.
+//						== object, String, Student 등 자료형 가리지 않고 들어갈 수 있다.
 		
 		// 1.  boolean add(E e) : 마지막 요소로 추가
 		list.add("아무거나");
