@@ -24,14 +24,15 @@ public class ExceptionHandlingService2 {
 		
 		try {
 			if(input == 1) System.out.println("[정상 수행]");
+			
 			else throw new RuntimeException(); // 예외 객체 생성후 던짐(throw)
-			
-		}catch(Exception e){ // 발생하는 모든 자식 예외 잡아서 처리(다형성 업캐스팅)
-			System.out.println("캐치문 수행");
-			
-		} finally{ // try 예외 발생 여부 관게 없이 수행
-				System.out.println("*** 무조건 수행 ***");
 		}
+		
+		// 발생하는 모든 자식 예외 잡아서 처리(업캐스팅)
+		catch(Exception e){ System.out.println("캐치문 수행");	}
+		
+		// try 예외 발생 여부 관게 없이 수행
+		finally{ System.out.println("*** 무조건 수행 ***");	}
 	}
 		
 	/**
